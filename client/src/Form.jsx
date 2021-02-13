@@ -8,6 +8,7 @@ class Form extends React.Component {
       'count': '',
     }
     this.handleChange = this.handleChange.bind(this);
+    this.resetFields = this.resetFields.bind(this);
   }
 
   handleChange(event) {
@@ -15,6 +16,14 @@ class Form extends React.Component {
     const value = event.target.value;
     this.setState({
       [name]: value
+    })
+  }
+
+  resetFields(event){
+    event.preventDefault();
+    this.setState({
+      'item': '',
+      'count': ''
     })
   }
 
@@ -27,7 +36,7 @@ render() {
       <label> Count:
         <input name="count" value={this.state.count} onChange = {this.handleChange}/>
       </label>
-      <button>Add Grocery</button>
+      <button onClick = {(e) => {e.preventDefault(); this.resetFields(e)}}>Add Grocery</button>
     </form>
   );
   }
