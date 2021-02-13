@@ -1,6 +1,8 @@
+const $ = require('jquery')
+
 var handler = {
 
-  URL: '',
+  URL: 'localhost:8080',
 
   post: function (item, successCB = () => {}, errorCB = () => {}) {
     $.ajax({

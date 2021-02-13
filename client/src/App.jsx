@@ -1,6 +1,7 @@
 import React from "react";
 import List from './List.jsx';
 import Form from './Form.jsx';
+import handler from './handler.js'
 
 class App extends React.Component {
   constructor() {
@@ -10,7 +11,18 @@ class App extends React.Component {
       formItem: '',
       formQuantity: '',
     }
+    this.getList = this.getList.bind(this);
   }
+  componentDidMount(){
+    debugger;
+    this.getList();
+  }
+
+
+  getList() {
+    handler.retrieve()
+  }
+
 
   render () {
     return(
