@@ -1,4 +1,5 @@
 import React from "react";
+import List from './List.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -12,7 +13,8 @@ class App extends React.Component {
     return(
       <div>
         <img src="grocery-bags.png"/>
-        <h1> hi guys its me </h1>
+        <h1> I heard you guys like Groceries </h1>
+        <List items = {this.state.list}></List>
       </div>
     )
   }
