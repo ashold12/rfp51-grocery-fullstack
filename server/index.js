@@ -20,8 +20,19 @@ app.get('/', (req, res) => {
   });
 });
 
-app.post('/', (req, res) =>
-  res.send('Post Success'));
+app.post('/', (req, res) => {
+  var data = req.data //contains item and counter properties
+  var query = `INSERT INTO groceryList VALUES (null, '${data.item}', '${data.count}'`
+  db.query(query, (err, msg) => {
+    if (err) {
+      console.log(err)
+      res.status(404).send(err)
+    } else {
+      console.log(msg)
+      res.status(201).send(msg)
+    }
+  });
+});
 
 
 app.listen(port, () => {
