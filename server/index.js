@@ -5,8 +5,10 @@ const app = express();
 const port = 8080;
 const cors = require("cors");
 const db = require("../db/index.js");
+const bodyParser = require('body-parser')
 
 app.use(cors());
+app.use(bodyParser.json());
 
 
 app.get('/', (req, res) => {
@@ -21,8 +23,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  var data = req.data //contains item and counter properties
-  var query = `INSERT INTO groceryList VALUES (null, '${data.item}', '${data.count}'`
+  var data = req.body //contains item and counter properties
+  var query = `INSERT INTO groceryList (name, count) VALUES ('${data.item}', ${data.count})`
   db.query(query, (err, msg) => {
     if (err) {
       console.log(err)
